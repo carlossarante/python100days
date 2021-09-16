@@ -1,11 +1,12 @@
 import turtle
+import random
 from turtle import Turtle, Screen
 
 def get_turtle_race(screen_width, screen_height, turtle_colors):
     starting_point_x = - screen_width / 2 + 20
     gap = screen_height / len(turtle_colors)
     turtle_list = []
-    turtle_y_positions = [screen_height + gap * color_index  for color_index in range(1, len(turtle_colors))]
+    turtle_y_positions = [-(screen_height / ) + gap * color_index for color_index in range(0, len(turtle_colors))]
 
     for turtle_index in range(0, len(turtle_colors)):
         turtle_created = Turtle(shape="turtle")
@@ -16,21 +17,20 @@ def get_turtle_race(screen_width, screen_height, turtle_colors):
 
     return turtle_list
 
-def start_race(screen_width, screen_height, turtle_list):
+def start_race(screen_width, screen_height):
     screen = Screen()
     is_race_on = False
     screen.setup(width=screen_width, height=screen_height)
     user_bet = screen.textinput(title="Make your first bet", prompt="Which turtle will win the race? Enter a color: ")
-    turtle_colors = ["red", "orange", "yellow", "green", "blue", "purple"]
-    turtle_list = get_turtle_race(screen_width=500, screen_height=400, turtle_colors=turtle_colors)
+    turtle_colors = ['red', 'pink', 'blue', 'black', 'yellow', 'gray']
+    turtle_list = get_turtle_race(screen_width=screen_width, screen_height=screen_height, turtle_colors=turtle_colors)
 
     if user_bet:
         is_race_on = True
     while is_race_on:
-
         # turtle size is 40
         for turtle_created in turtle_list:
-            if turtle.xcor() > width / 2 - (40 / 2):
+            if turtle_created.xcor() > screen_width / 2 - (40 / 2):
                 is_race_on = False
                 winner_color = turtle.pencolor()
 
