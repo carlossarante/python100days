@@ -37,21 +37,18 @@ while is_game_on:
         scoreboard.increase_score()
 
     #detect collision
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+    if snake.head.xcor() > 300 or snake.head.xcor() < -300 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
         print(f'Failed on {snake.head.position()}')
 
-        is_game_on = False
         scoreboard.game_over()
+        snake.reset()
+
 
     for segment in snake.squares[1:]:
         if snake.head.distance(segment) < 10:
             print(f'Failed on {snake.head.position()} -> {segment.position()}')
-            is_game_on = False
             scoreboard.game_over()
-
-
-
-
+            snake.reset()
 
 
 screen.exitonclick()

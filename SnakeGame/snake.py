@@ -20,6 +20,13 @@ class Snake:
 
         return turtle_instance
 
+    def reset(self):
+        for square in self.squares:
+            square.goto(1000, 1000)
+        self.squares.clear()
+        self.create_snake()
+        self.head = self.squares[0]
+
     def grow(self):
         offset = self.squares[-1].position()
         turtle_instance = self.create_instance(offset)
